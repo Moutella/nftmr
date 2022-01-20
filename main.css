@@ -1,0 +1,19 @@
+.row {
+  margin: 0 !important;
+}
+
+#float_menu {
+  position: absolute;
+  bottom: 1vh;
+  width: 100vw;
+  pointer-events: none;
+}
+
+.float_card {
+  pointer-events: all;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 0.5vh;
+}
