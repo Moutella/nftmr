@@ -20,8 +20,8 @@ if (window.FileList && window.File && window.FileReader) {
       let array_buffer = new Uint8Array(event.target.result);
       Jimp.read(event.target.result)
         .then(async (image) => {
-          const mask = await Jimp.read('mask.png');
-          const border = await Jimp.read('black_border.png');
+          const mask = await Jimp.read('mask_big.png');
+          const border = await Jimp.read('white_border_big.png');
           let offsetX = 0
           let offsetY = 0
           if (image.getHeight() < image.getWidth()) {
@@ -38,7 +38,7 @@ if (window.FileList && window.File && window.FileReader) {
           image.composite(border, 0, 0)
           image.getBase64('image/png', (err, res) => {
             output.src = res
-          })
+          });
         })
         .catch((error) => {
           console.log(`Error loading image -> ${error}`)
