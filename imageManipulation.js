@@ -21,6 +21,7 @@ if (window.FileList && window.File && window.FileReader) {
       Jimp.read(event.target.result)
         .then(async (image) => {
           const mask = await Jimp.read('mask.png');
+          const border = await Jimp.read('black_border.png');
           let offsetX = 0
           let offsetY = 0
           if (image.getHeight() < image.getWidth()) {
@@ -34,6 +35,7 @@ if (window.FileList && window.File && window.FileReader) {
           }
           image.crop(offsetX, offsetY, 400, 400)
           image.mask(mask);
+          image.composite(border, 0, 0)
           image.getBase64('image/png', (err, res) => {
             output.src = res
           })
